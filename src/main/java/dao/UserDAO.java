@@ -39,8 +39,8 @@ public class UserDAO {
 				user.setIntroduce(rs.getString("us_introduce"));
 				user.setRole(rs.getString("us_role"));
 				user.setThumbnail(rs.getString("us_thumbnail"));
-				user.setCreated_at(rs.getDate("us_created_at"));
-				user.setUpdated_at(rs.getDate("us_updated_at"));
+				user.setCreatedAt(rs.getDate("us_created_at"));
+				user.setUpdatedAt(rs.getDate("us_updated_at"));
 				
 				users.add(user);
 			}
@@ -79,8 +79,8 @@ public class UserDAO {
 				dto.setIntroduce(rs.getString("us_introduce"));
 				dto.setRole(rs.getString("us_role"));
 				dto.setThumbnail(rs.getString("us_thumbnail"));
-				dto.setCreated_at(rs.getDate("us_created_at"));
-				dto.setUpdated_at(rs.getDate("us_updated_at"));
+				dto.setCreatedAt(rs.getDate("us_created_at"));
+				dto.setUpdatedAt(rs.getDate("us_updated_at"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

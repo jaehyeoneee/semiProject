@@ -29,20 +29,20 @@ public class CourseDAO {
 				CourseDTO course = new CourseDTO();
 				
 				course.setId(rs.getInt("co_id"));
-				course.setUs_id(rs.getInt("co_author_us_id"));
-				course.setHt_id(rs.getInt("co_hashtag_ht_id"));
-				course.setCa_id(rs.getInt("co_category_ca_id"));
+				course.setUserId(rs.getInt("co_author_us_id"));
+				course.setHashtagId(rs.getInt("co_hashtag_ht_id"));
+				course.setCategoryId(rs.getInt("co_category_ca_id"));
 				course.setTitle(rs.getString("co_title"));
 				course.setRating(rs.getDouble("co_rating"));
-				course.setRegister_count(rs.getInt("co_register_count"));
-				course.setPrice_per_day(rs.getInt("co_price_per_day"));
+				course.setRegisterCount(rs.getInt("co_register_count"));
+				course.setPricePerDay(rs.getInt("co_price_per_day"));
 				course.setLike(rs.getInt("co_like"));
 				course.setIntroduce(rs.getString("co_introduce"));
 				course.setCurriculum(rs.getString("co_curriculum"));
-				course.setRecommand_for(rs.getString("co_recommand_for"));
-				course.setBefore_check(rs.getString("co_before_check"));
-				course.setCreated_at(rs.getDate("co_created_at"));
-				course.setUpdated_at(rs.getDate("co_updated_at"));
+				course.setRecommandFor(rs.getString("co_recommand_for"));
+				course.setBeforeCheck(rs.getString("co_before_check"));
+				course.setCreatedAt(rs.getDate("co_created_at"));
+				course.setUpdatedAt(rs.getDate("co_updated_at"));
 				
 			courses.add(course);
 			}
@@ -72,20 +72,20 @@ public class CourseDAO {
 
 			if (rs.next()) {
 				dto.setId(rs.getInt("co_id"));
-				dto.setUs_id(rs.getInt("co_author_us_id"));
-				dto.setHt_id(rs.getInt("co_hashtag_ht_id"));
-				dto.setCa_id(rs.getInt("co_category_ca_id"));
+				dto.setUserId(rs.getInt("co_author_us_id"));
+				dto.setHashtagId(rs.getInt("co_hashtag_ht_id"));
+				dto.setCategoryId(rs.getInt("co_category_ca_id"));
 				dto.setTitle(rs.getString("co_title"));
 				dto.setRating(rs.getDouble("co_rating"));
-				dto.setRegister_count(rs.getInt("co_register_count"));
-				dto.setPrice_per_day(rs.getInt("co_price_per_day"));
+				dto.setRegisterCount(rs.getInt("co_register_count"));
+				dto.setPricePerDay(rs.getInt("co_price_per_day"));
 				dto.setLike(rs.getInt("co_like"));
 				dto.setIntroduce(rs.getString("co_introduce"));
 				dto.setCurriculum(rs.getString("co_curriculum"));
-				dto.setRecommand_for(rs.getString("co_recommand_for"));
-				dto.setBefore_check(rs.getString("co_before_check"));
-				dto.setCreated_at(rs.getDate("co_created_at"));
-				dto.setUpdated_at(rs.getDate("co_updated_at"));
+				dto.setRecommandFor(rs.getString("co_recommand_for"));
+				dto.setBeforeCheck(rs.getString("co_before_check"));
+				dto.setCreatedAt(rs.getDate("co_created_at"));
+				dto.setUpdatedAt(rs.getDate("co_updated_at"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -108,18 +108,18 @@ public class CourseDAO {
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, dto.getUs_id());
-			pstmt.setInt(2, dto.getHt_id());
-			pstmt.setInt(3, dto.getCa_id());
+			pstmt.setInt(1, dto.getUserId());
+			pstmt.setInt(2, dto.getHashtagId());
+			pstmt.setInt(3, dto.getCategoryId());
 			pstmt.setString(4, dto.getTitle());
 			pstmt.setDouble(5, dto.getRating());
-			pstmt.setInt(6, dto.getRegister_count());
-			pstmt.setInt(7, dto.getPrice_per_day());
+			pstmt.setInt(6, dto.getRegisterCount());
+			pstmt.setInt(7, dto.getPricePerDay());
 			pstmt.setInt(8, dto.getLike());
 			pstmt.setString(9, dto.getIntroduce());
 			pstmt.setString(10, dto.getCurriculum());
-			pstmt.setString(11, dto.getRecommand_for());
-			pstmt.setString(12, dto.getBefore_check());
+			pstmt.setString(11, dto.getRecommandFor());
+			pstmt.setString(12, dto.getBeforeCheck());
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -141,18 +141,18 @@ public class CourseDAO {
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, dto.getUs_id());
-			pstmt.setInt(2, dto.getHt_id());
-			pstmt.setInt(3, dto.getCa_id());
+			pstmt.setInt(1, dto.getUserId());
+			pstmt.setInt(2, dto.getHashtagId());
+			pstmt.setInt(3, dto.getCategoryId());
 			pstmt.setString(4, dto.getTitle());
 			pstmt.setDouble(5, dto.getRating());
-			pstmt.setInt(6, dto.getRegister_count());
-			pstmt.setInt(7, dto.getPrice_per_day());
+			pstmt.setInt(6, dto.getRegisterCount());
+			pstmt.setInt(7, dto.getPricePerDay());
 			pstmt.setInt(8, dto.getLike());
 			pstmt.setString(9, dto.getIntroduce());
 			pstmt.setString(10, dto.getCurriculum());
-			pstmt.setString(11, dto.getRecommand_for());	
-			pstmt.setString(12, dto.getBefore_check());
+			pstmt.setString(11, dto.getRecommandFor());	
+			pstmt.setString(12, dto.getBeforeCheck());
 			pstmt.setInt(13, dto.getId());
 
 			result = pstmt.executeUpdate();
@@ -180,28 +180,129 @@ public class CourseDAO {
 			db.dbClose(pstmt, conn);
 		}
 	}
+	
+	//유저가 구매한 강의
+	public CourseDTO getOneByUserId(int co_author_us_id) {
+		CourseDTO dto = new CourseDTO();
 
+		Connection conn = db.getLocalOracle();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from buy bu, course co, user us where bu.bu_user_us_id = us.us_id AND co.co_id = bu.bu_course_co_id AND bu.bu_user_us_id=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, co_author_us_id);
+
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setId(rs.getInt("co_id"));
+				dto.setUserId(rs.getInt("co_author_us_id"));
+				dto.setHashtagId(rs.getInt("co_hashtag_ht_id"));
+				dto.setCategoryId(rs.getInt("co_category_ca_id"));
+				dto.setTitle(rs.getString("co_title"));
+				dto.setRating(rs.getDouble("co_rating"));
+				dto.setRegisterCount(rs.getInt("co_register_count"));
+				dto.setPricePerDay(rs.getInt("co_price_per_day"));
+				dto.setLike(rs.getInt("co_like"));
+				dto.setIntroduce(rs.getString("co_introduce"));
+				dto.setCurriculum(rs.getString("co_curriculum"));
+				dto.setRecommandFor(rs.getString("co_recommand_for"));
+				dto.setBeforeCheck(rs.getString("co_before_check"));
+				dto.setCreatedAt(rs.getDate("co_created_at"));
+				dto.setUpdatedAt(rs.getDate("co_updated_at"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return dto;
+	}
+	
+	public int getBestCourseId() {
+		int result = 0;
+		Connection conn = db.getLocalOracle();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select lt_course_co_id as max_course_id, count(*) as cnt from like_that group by lt_course_co_id \r\n"
+				+ "HAVING lt_course_co_id IS NOT NULL order by cnt desc limit 1";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt("max_course_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return result;
+	}
+	
+	public CourseDTO getBestCourse() {
+		CourseDTO dto = new CourseDTO();
+		Connection conn = db.getLocalOracle();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = getBestCourseId();
+		String sql = "select * from course where co_id = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, result);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setId(rs.getInt("co_id"));
+				dto.setUserId(rs.getInt("co_author_us_id"));
+				dto.setHashtagId(rs.getInt("co_hashtag_ht_id"));
+				dto.setCategoryId(rs.getInt("co_category_ca_id"));
+				dto.setTitle(rs.getString("co_title"));
+				dto.setRating(rs.getDouble("co_rating"));
+				dto.setRegisterCount(rs.getInt("co_register_count"));
+				dto.setPricePerDay(rs.getInt("co_price_per_day"));
+				dto.setLike(rs.getInt("co_like"));
+				dto.setIntroduce(rs.getString("co_introduce"));
+				dto.setCurriculum(rs.getString("co_curriculum"));
+				dto.setRecommandFor(rs.getString("co_recommand_for"));
+				dto.setBeforeCheck(rs.getString("co_before_check"));
+				dto.setCreatedAt(rs.getDate("co_created_at"));
+				dto.setUpdatedAt(rs.getDate("co_updated_at"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return dto;
+	}
+	
 	public static void main(String[] args) {
 		
-		
-		
-		/*
-		 * CourseDAO dao = new CourseDAO();
-		 * 
-		 * CourseDTO course = new CourseDTO();
-		 * 
-		 * course.setUs_id(5); course.setHt_id(4); course.setCa_id(1);
-		 * course.setTitle("제목"); course.setRating(2.6); course.setRegister_count(3);
-		 * course.setPrice_per_day(20); course.setLike(4); course.setIntroduce("ㅇㅇㅇ");
-		 * course.setCurriculum("ㅇㅇㅇ"); course.setRecommand_for("ㅇㅇㅇ");
-		 * course.setBefore_check("ㅇㅇㅇ");
-		 * 
-		 * System.out.print(dao.create(course));
-		 */
+		 CourseDAO dao = new CourseDAO();
 		 
-		
-		
-		
+//		 CourseDTO course = new CourseDTO();
+		 
+//		 course.setUs_id(5); course.setHt_id(4); course.setCa_id(1);
+//		 course.setTitle("제목"); course.setRating(2.6); course.setRegister_count(3);
+//		 course.setPrice_per_day(20); course.setLike(4); course.setIntroduce("ㅇㅇㅇ");
+//		 course.setCurriculum("ㅇㅇㅇ"); course.setRecommand_for("ㅇㅇㅇ");
+//		 course.setBefore_check("ㅇㅇㅇ");
+//		 
+//		 System.out.print(dao.create(course));
+		 
+
 		/*
 		 * ArrayList<CourseDTO>courses = new CourseDAO().get();
 		 * 
@@ -256,6 +357,26 @@ public class CourseDAO {
 		/*
 		 * CourseDAO dao = new CourseDAO(); dao.delete(3);
 		 */
+		
+//		  CourseDTO course=new CourseDAO().getOneByUserId(5);
+//		  
+//		  System.out.println(course.getId()); 
+//		  System.out.println(course.getUserId());
+//		  System.out.println(course.getHashtagId()); 
+//		  System.out.println(course.getCategoryId());
+//		  System.out.println(course.getTitle());
+//		  System.out.println(course.getRating());
+//		  System.out.println(course.getRegisterCount());
+//		  System.out.println(course.getPricePerDay());
+//		  System.out.println(course.getLike());
+//		  System.out.println(course.getIntroduce());
+//		  System.out.println(course.getCurriculum());
+//		  System.out.println(course.getRecommandFor());
+//		  System.out.println(course.getBeforeCheck());
+//		  System.out.println(course.getCreatedAt());
+//		  System.out.println(course.getUpdatedAt());
+		 System.out.println(dao.getBestCourse().getTitle());
+		
 	}
 
 }

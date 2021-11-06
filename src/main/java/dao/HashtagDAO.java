@@ -29,8 +29,9 @@ public class HashtagDAO {
 				HashtagDTO hashtag = new HashtagDTO();
 				hashtag.setId(rs.getInt("ht_id"));
 				hashtag.setName(rs.getString("ht_name"));
-				hashtag.setCreated_at(rs.getDate("ht_created_at"));
-				hashtag.setUpdated_at(rs.getDate("ht_updated_at"));
+				hashtag.setCategoryId(rs.getInt("ht_category_ca_id"));
+				hashtag.setCreatedAt(rs.getDate("ht_created_at"));
+				hashtag.setUpdatedAt(rs.getDate("ht_updated_at"));
 				hashtags.add(hashtag);
 			}
 		} catch (SQLException e) {
@@ -60,6 +61,9 @@ public class HashtagDAO {
 			if (rs.next()) {
 				dto.setId(rs.getInt("ht_id"));
 				dto.setName(rs.getString("ht_name"));
+				dto.setCategoryId(rs.getInt("ht_category_ca_id"));
+				dto.setCreatedAt(rs.getDate("ht_created_at"));
+				dto.setUpdatedAt(rs.getDate("ht_updated_at"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -75,12 +79,13 @@ public class HashtagDAO {
 		Connection conn = db.getLocalOracle();
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into hashtag(ht_name) values(?)";
+		String sql = "insert into hashtag(ht_name,ht_category_ca_id) values(?,?)";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, dto.getName());
+			pstmt.setInt(2, dto.getCategoryId());
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -95,13 +100,14 @@ public class HashtagDAO {
 		Connection conn = db.getLocalOracle();
 		PreparedStatement pstmt = null;
 
-		String sql = "update hashtag set ht_name=? where ht_id=?";
+		String sql = "update hashtag set ht_category_ca_id=?,ht_name=? where ht_id=?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, dto.getName());
-			pstmt.setInt(2, dto.getId());
+			
+			pstmt.setInt(1, dto.getCategoryId());
+			pstmt.setString(2, dto.getName());
+			pstmt.setInt(3, dto.getId());
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -133,32 +139,36 @@ public class HashtagDAO {
 
 		//HashtagDAO dao = new HashtagDAO();
 		
-		//dao.delete(1);
-		
-		
 		/*
 		 * HashtagDTO hashtag1 = new HashtagDTO(); hashtag1.setName("tag2");
-		 * System.out.print(dao.create(hashtag1));
+		 * hashtag1.setCategoryId(2); System.out.print(dao.create(hashtag1));
 		 */
 		 
 		
 		/*
-		 * HashtagDTO hashtag2=new HashtagDTO(); 
-		 * hashtag2.setName("tagupdate");
-		 * hashtag2.setId(4); System.out.print(dao.update(hashtag2));
-		 */
-		
-		/*
 		 * ArrayList<HashtagDTO> hashtags = new HashtagDAO().get();
 		 * 
-		 * for (HashtagDTO hashtag: hashtags) 
-		 * { System.out.println(hashtag.getId());
+		 * for (HashtagDTO hashtag: hashtags) { System.out.println(hashtag.getId());
+		 * System.out.println(hashtag.getCategoryId());
 		 * System.out.println(hashtag.getName()); }
 		 */
+		 
 		
 		/*
-		 * HashtagDTO hashtag=new HashtagDAO().getOne(4);
+		 * HashtagDTO hashtag=new HashtagDAO().getOne(14);
+		 * System.out.println(hashtag.getId());
+		 * System.out.println(hashtag.getCategoryId());
 		 * System.out.println(hashtag.getName());
 		 */
+		 
+		
+		/*
+		 * HashtagDTO hashtag2=new HashtagDTO(); hashtag2.setCategoryId(2);
+		 * hashtag2.setName("tagupdate22"); hashtag2.setId(10);
+		 * System.out.print(dao.update(hashtag2));
+		 */
+		
+		//dao.delete(4);
 	}
 }
+

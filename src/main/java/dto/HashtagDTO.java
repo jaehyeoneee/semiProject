@@ -6,8 +6,9 @@ public class HashtagDTO {
 	
 	private int id;
 	private String name;
-	private Date created_at;
-	private Date updated_at;
+	private int categoryId;
+	private Date createdAt;
+	private Date updatedAt;
 	
 	public int getId() {
 		return id;
@@ -21,16 +22,26 @@ public class HashtagDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getCreated_at() {
-		return created_at;
+	public int getCategoryId() {
+		return categoryId;
 	}
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
-	public Date getUpdated_at() {
-		return updated_at;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
-	public void setUpdated_at(Date updated_at) {
-		this.updated_at = updated_at;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	
+	
+	
+	
 }

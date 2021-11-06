@@ -10,9 +10,16 @@ public class CommentDTO {
 	private String content;
 	private int like;
 	private String type;
+	private int isSolved;
 	private Date createdAt; 
 	private Date updatedAt;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getUserId() {
 		return userId;
 	}
@@ -24,24 +31,6 @@ public class CommentDTO {
 	}
 	public void setCourseId(int courseId) {
 		this.courseId = courseId;
-	}
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getContent() {
 		return content;
@@ -61,5 +50,23 @@ public class CommentDTO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+	public int getIsSolved() {
+		return isSolved;
+	}
+	public void setIsSolved(int isSolved) {
+		this.isSolved = isSolved;
+	}
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 }
